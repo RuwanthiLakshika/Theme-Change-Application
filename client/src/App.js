@@ -24,7 +24,9 @@ function App() {
 
         <Header />
 
-        <button onClick={handleclick}>Click</button>
+        <button className="btn btn-primary" onClick={handleclick}>
+            Click
+          </button>
         </ApplicationWrapper>
       </div>
     </ThemeContext.Provider>
