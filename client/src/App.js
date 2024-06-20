@@ -1,21 +1,36 @@
 import logo from './little-monkey-riding-motorcycle-white-background.png';
 import './App.css';
+import { ThemeContext, themes } from './components/theme';
+import Header from './components/Header';
+import { useState } from 'react';
+import ApplicationWrapper from './components/ApplicationWrapper';
 
 
 
 function App() {
+
+  const [selectedTheme, setSelectedTheme] = useState(themes.light);
+
   const handleclick = () => {
-  
+    setSelectedTheme(selectedTheme === themes.dark ? themes.light : themes.dark);
   }
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeContext.Provider value={selectedTheme}>
+      <div className="App">
+      <ApplicationWrapper>
         <img src={logo} className="App-logo" alt="logo" />
         <br/>
-        <p>Welcome to the Theme Change Application</p>
-        <button onclick={handleclick}>Click</button>
-      </header>
-    </div>
+
+        <Header />
+
+        <button className="btn btn-primary" onClick={handleclick}>
+            Click
+          </button>
+        </ApplicationWrapper>
+      </div>
+    </ThemeContext.Provider>
+    
   );
 }
 
